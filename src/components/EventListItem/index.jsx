@@ -1,26 +1,31 @@
-import {Col, Divider, Row, Typography} from "antd";
+import {Card, Col, Divider, Row, Typography} from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {Fragment} from "react";
 
-const EventListItem = () => {
-
+const EventListItem = ({event}) => {
+    const displayDate = (date) => {
+        const splitDate = date.split(", ")
+        return splitDate[0].split(" ");
+    }
     return (
         <Fragment>
-            <Row justify="center" align="middle" className="event-card">
-                <Col span={4}>
-                    <Typography.Title level={3}>11</Typography.Title>
-                    <Typography.Title level={5}>Sep</Typography.Title>
-                </Col>
-                <Col span={18}>
-                    <Typography.Title level={3}>Coffee</Typography.Title>
-                    <Typography.Text>Place</Typography.Text>
-                </Col>
-                <Col span={2}>
-                    <RightOutlined style={{
-                        fontSize: "36px"
-                    }}/>
-                </Col>
-            </Row>
+            <Card>
+                <Row justify="center" align="middle">
+                    <Col span={4}>
+                        <Typography.Title level={3}>{displayDate(event.dateTime)[1]}</Typography.Title>
+                        <Typography.Title level={5}>{displayDate(event.dateTime)[0]}</Typography.Title>
+                    </Col>
+                    <Col span={18}>
+                        <Typography.Title level={3}>{event.name}</Typography.Title>
+                        <Typography.Text>Place</Typography.Text>
+                    </Col>
+                    <Col span={2}>
+                        <RightOutlined style={{
+                            fontSize: "36px"
+                        }}/>
+                    </Col>
+                </Row>
+            </Card>
             <Divider/>
         </Fragment>
     )
