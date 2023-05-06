@@ -3,6 +3,7 @@ import EventList from "./components/EventList";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import EventCreate from "./components/EventCreate";
 import NotFound from "./components/NotFound";
+import EventView from "./components/EventView";
 
 function App() {
 
@@ -15,6 +16,11 @@ function App() {
         {
             path: "/create",
             element: <EventCreate/>,
+            errorElement: <NotFound/>
+        },
+        {
+            path: "/view/:id",
+            element: <EventView/>,
             errorElement: <NotFound/>
         }
     ]);

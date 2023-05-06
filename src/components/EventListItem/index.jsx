@@ -2,11 +2,12 @@ import {Card, Col, Divider, Row, Typography} from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {Fragment} from "react";
 
-const EventListItem = ({event}) => {
+const EventListItem = ({event, onEventClick}) => {
     const displayDate = (date) => {
         const splitDate = date.split(", ")
         return splitDate[0].split(" ");
     }
+
     return (
         <Fragment>
             <Card>
@@ -20,7 +21,7 @@ const EventListItem = ({event}) => {
                         <Typography.Text>Place</Typography.Text>
                     </Col>
                     <Col span={2}>
-                        <RightOutlined style={{
+                        <RightOutlined onClick={() => onEventClick(event.id)} style={{
                             fontSize: "36px"
                         }}/>
                     </Col>
